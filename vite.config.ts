@@ -12,4 +12,8 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Node preset: MongoDB + Nodemailer SMTP require TCP (not Cloudflare Workers).
+  nitro: {
+    preset: "vercel",
+  },
 });

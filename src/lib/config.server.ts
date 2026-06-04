@@ -1,26 +1,43 @@
 import process from "node:process";
 
-// Server-only config. The .server.ts suffix prevents Vite from bundling
-// this file into the client — values here never reach the browser.
-//
-// On Cloudflare Workers, env binds at REQUEST time. Module-scope reads
-// (e.g. `const x = process.env.X`) resolve to undefined — always read
-// process.env INSIDE a function or handler.
-//
-// When to use which env-access pattern:
-//   - .server.ts module (this file): server-only helpers reused across
-//     handlers. Wrap reads in a function so they run per-request.
-//   - inline process.env inside a createServerFn handler: one-off reads
-//     not reused elsewhere.
-//   - import.meta.env.VITE_FOO: PUBLIC config readable from both client
-//     and server (analytics IDs, public URLs). Define in .env with the
-//     VITE_ prefix. Never put secrets here — they ship to the browser.
+export type ServerConfig = {
+  nodeEnv: string | undefined;
+  mongodbUri: string | undefined;
+  mongodbDbName: string;
+  mongodbCollection: string;
+  smtpHost: string | undefined;
+  smtpPort: number;
+  smtpSecure: boolean;
+  smtpUser: string | undefined;
+  smtpPass: string | undefined;
+  smtpFrom: string;
+  clientEmail: string;
+};
 
-export function getServerConfig() {
+export function getServerConfig(): ServerConfig {
+  const smtpPort = Number(process.env.SMTP_PORT ?? "587");
   return {
     nodeEnv: process.env.NODE_ENV,
-    // Add server-only values here, e.g.:
-    //   databaseUrl: process.env.DATABASE_URL,
-    //   stripeSecretKey: process.env.STRIPE_SECRET_KEY,
+    mongodbUri: process.env.MONGODB_URI,
+    mongodbDbName: process.env.MONGODB_DB_NAME ?? "jdinfra",
+    mongodbCollection: process.env.MONGODB_COLLECTION ?? "enquiries",
+    smtpHost: process.env.SMTP_HOST,
+    smtpPort: Number.isFinite(smtpPort) ? smtpPort : 587,
+    smtpSecure: process.env.SMTP_SECURE === "true",
+    smtpUser: process.env.SMTP_USER,
+    smtpPass: process.env.SMTP_PASS,
+    smtpFrom: process.env.SMTP_FROM ?? "JD Infra Website <jdinfradeveloper@gmail.com>",
+    clientEmail: process.env.CLIENT_EMAIL ?? "jdinfradeveloper@gmail.com",
   };
+}
+
+export function assertEnquiryConfig(config: ServerConfig): void {
+  const missing: string[] = [];
+  if (!config.mongodbUri) missing.push("MONGODB_URI");
+  if (!config.smtpHost) missing.push("SMTP_HOST");
+  if (!config.smtpUser) missing.push("SMTP_USER");
+  if (!config.smtpPass) missing.push("SMTP_PASS");
+  if (missing.length > 0) {
+    throw new Error(`Missing required environment variables: ${missing.join(", ")}`);
+  }
 }

@@ -2,12 +2,17 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
+import { submitEnquiry } from "@/lib/api/enquiry.functions";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact JD Infra Developers | Book Vishnu Kuteer Visit" },
-      { name: "description", content: "Get in touch with JD Infra Developers. Visit our office in Ramnagar Anantapur or book a site visit to Vishnu Kuteer." },
+      {
+        name: "description",
+        content:
+          "Get in touch with JD Infra Developers. Visit our office in Ramnagar Anantapur or book a site visit to Vishnu Kuteer.",
+      },
       { property: "og:title", content: "Contact JD Infra Developers" },
       { property: "og:description", content: "Book your Vishnu Kuteer site visit today." },
     ],
@@ -15,34 +20,53 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
+const BUDGET_OPTIONS = [
+  "Below 30 Lakhs",
+  "30 to 50 Lakhs",
+  "50 to 75 Lakhs",
+  "Above 75 Lakhs",
+] as const;
+
 function Contact() {
   const [sent, setSent] = useState(false);
-  const [form, setForm] = useState({ name: "", phone: "", budget: "Below 30 Lakhs", message: "" });
-  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [budget, setBudget] = useState<string>(BUDGET_OPTIONS[0]);
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setError("");
-    const name = form.name.trim();
-    const phone = form.phone.trim();
-    if (!name || name.length > 100) { setError("Please enter a valid name"); return; }
-    if (!/^[0-9]{10}$/.test(phone)) { setError("Please enter a valid 10-digit phone number"); return; }
-    const message = form.message.trim().slice(0, 1000);
-
-    const text = `New Enquiry from Vishnu Kuteer website%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0ABudget: ${encodeURIComponent(form.budget)}%0AMessage: ${encodeURIComponent(message)}`;
-    window.open(`https://wa.me/919642166456?text=${text}`, "_blank", "noopener,noreferrer");
-    setSent(true);
-    setForm({ name: "", phone: "", budget: "Below 30 Lakhs", message: "" });
-  };
+    setError(null);
+    setLoading(true);
+    try {
+      const result = await submitEnquiry({
+        data: { name, phone, budget, message },
+      });
+      if (!result.ok) {
+        setError(result.message);
+        return;
+      }
+      setSent(true);
+    } catch {
+      setError("Could not submit your enquiry. Please call us at 9642166456.");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <>
       <section className="bg-primary py-20 text-primary-foreground">
         <div className="mx-auto max-w-5xl px-4 text-center md:px-8">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-gold">Contact Us</p>
-          <h1 className="mt-4 font-display text-5xl font-bold md:text-6xl">Speak to Our Property Advisor</h1>
+          <h1 className="mt-4 font-display text-5xl font-bold md:text-6xl">
+            Speak to Our Property Advisor
+          </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg opacity-90">
-            We are happy to walk you through villa options, pricing and the AHUDA approved layout. Reach us anytime.
+            We are happy to walk you through villa options, pricing and the AHUDA approved layout.
+            Reach us anytime.
           </p>
         </div>
       </section>
@@ -55,8 +79,13 @@ function Contact() {
               <div>
                 <h3 className="font-display text-base font-bold text-primary">Call Us</h3>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  <a href="tel:+919882342456" className="hover:text-primary">9882342456</a><br />
-                  <a href="tel:+919642166456" className="hover:text-primary">9642166456</a>
+                  <a href="tel:+919882342456" className="hover:text-primary">
+                    9882342456
+                  </a>
+                  <br />
+                  <a href="tel:+919642166456" className="hover:text-primary">
+                    9642166456
+                  </a>
                 </p>
               </div>
             </div>
@@ -66,7 +95,12 @@ function Contact() {
               <Mail className="h-5 w-5 flex-shrink-0 text-gold" />
               <div>
                 <h3 className="font-display text-base font-bold text-primary">Email</h3>
-                <a href="mailto:jdinfradeveloper@gmail.com" className="text-sm text-muted-foreground hover:text-primary">jdinfradeveloper@gmail.com</a>
+                <a
+                  href="mailto:jdinfradeveloper@gmail.com"
+                  className="text-sm text-muted-foreground hover:text-primary"
+                >
+                  jdinfradeveloper@gmail.com
+                </a>
               </div>
             </div>
           </div>
@@ -76,8 +110,10 @@ function Contact() {
               <div>
                 <h3 className="font-display text-base font-bold text-primary">Office Address</h3>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  H.NO. 6-2-897, Meeseva Road<br />
-                  Near Venkateswara Swamy Temple<br />
+                  H.NO. 6-2-897, Meeseva Road
+                  <br />
+                  Near Venkateswara Swamy Temple
+                  <br />
                   Ramnagar, Ananthapuramu
                 </p>
               </div>
@@ -89,7 +125,8 @@ function Contact() {
               <div>
                 <h3 className="font-display text-base font-bold text-primary">Site Address</h3>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Survey No 120, Kurugunta Village<br />
+                  Survey No 120, Kurugunta Village
+                  <br />
                   Kalyandurgam Main Road, Anantapur
                 </p>
               </div>
@@ -101,7 +138,8 @@ function Contact() {
               <div>
                 <h3 className="font-display text-base font-bold text-primary">Business Hours</h3>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Monday to Saturday 9:00 AM to 7:00 PM<br />
+                  Monday to Saturday 9:00 AM to 7:00 PM
+                  <br />
                   Sunday 10:00 AM to 5:00 PM
                 </p>
               </div>
@@ -117,7 +155,6 @@ function Contact() {
           </a>
         </div>
 
-
         <div className="rounded-3xl border border-gold/30 bg-accent/30 p-8">
           <h2 className="font-display text-3xl font-bold text-primary">Send Us an Enquiry</h2>
           <p className="mt-2 text-muted-foreground">We will reach out within one working day.</p>
@@ -125,60 +162,87 @@ function Contact() {
           {sent ? (
             <div className="mt-8 rounded-xl border border-gold bg-card p-8 text-center">
               <h3 className="font-display text-2xl font-bold text-primary">Thank You</h3>
-              <p className="mt-2 text-muted-foreground">Your enquiry has been sent via WhatsApp. Our advisor will reach out shortly.</p>
-              <button onClick={() => setSent(false)} className="mt-4 text-sm font-semibold text-gold hover:underline">Send another enquiry</button>
+              <p className="mt-2 text-muted-foreground">
+                Your enquiry has been recorded. Our advisor will call you shortly.
+              </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+              {error && (
+                <p
+                  className="rounded-lg border border-destructive/50 bg-destructive/10 px-4 py-3 text-sm text-destructive"
+                  role="alert"
+                >
+                  {error}
+                </p>
+              )}
               <div>
-                <label className="text-sm font-medium text-foreground">Name</label>
+                <label htmlFor="enquiry-name" className="text-sm font-medium text-foreground">
+                  Name
+                </label>
                 <input
+                  id="enquiry-name"
                   required
                   type="text"
-                  maxLength={100}
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="mt-1 w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-gold"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  disabled={loading}
+                  className="mt-1 w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-gold disabled:opacity-60"
                 />
               </div>
               <div>
-                <label className="text-sm font-medium text-foreground">Phone</label>
+                <label htmlFor="enquiry-phone" className="text-sm font-medium text-foreground">
+                  Phone
+                </label>
                 <input
+                  id="enquiry-phone"
                   required
                   type="tel"
                   pattern="[0-9]{10}"
-                  maxLength={10}
-                  value={form.phone}
-                  onChange={(e) => setForm({ ...form, phone: e.target.value.replace(/\D/g, "") })}
-                  className="mt-1 w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-gold"
+                  title="Enter a 10-digit mobile number"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
+                  disabled={loading}
+                  className="mt-1 w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-gold disabled:opacity-60"
                 />
               </div>
               <div>
-                <label className="text-sm font-medium text-foreground">Budget</label>
+                <label htmlFor="enquiry-budget" className="text-sm font-medium text-foreground">
+                  Budget
+                </label>
                 <select
-                  value={form.budget}
-                  onChange={(e) => setForm({ ...form, budget: e.target.value })}
-                  className="mt-1 w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-gold"
+                  id="enquiry-budget"
+                  value={budget}
+                  onChange={(e) => setBudget(e.target.value)}
+                  disabled={loading}
+                  className="mt-1 w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-gold disabled:opacity-60"
                 >
-                  <option>Below 30 Lakhs</option>
-                  <option>30 to 50 Lakhs</option>
-                  <option>50 to 75 Lakhs</option>
-                  <option>Above 75 Lakhs</option>
+                  {BUDGET_OPTIONS.map((opt) => (
+                    <option key={opt} value={opt}>
+                      {opt}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div>
-                <label className="text-sm font-medium text-foreground">Message</label>
+                <label htmlFor="enquiry-message" className="text-sm font-medium text-foreground">
+                  Message
+                </label>
                 <textarea
+                  id="enquiry-message"
                   rows={4}
-                  maxLength={1000}
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="mt-1 w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-gold"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  disabled={loading}
+                  className="mt-1 w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-gold disabled:opacity-60"
                 />
               </div>
-              {error && <p className="text-sm font-medium text-destructive">{error}</p>}
-              <button type="submit" className="w-full rounded-full bg-primary px-6 py-3.5 font-semibold text-primary-foreground transition hover:bg-primary/90">
-                Submit Enquiry
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full rounded-full bg-primary px-6 py-3.5 font-semibold text-primary-foreground transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {loading ? "Submitting…" : "Submit Enquiry"}
               </button>
             </form>
           )}
