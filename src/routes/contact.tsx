@@ -29,35 +29,35 @@ function Contact() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-10 px-4 py-20 md:grid-cols-2 md:px-8">
-        <div className="space-y-6">
-          <div className="rounded-2xl border border-border bg-card p-6">
-            <div className="flex items-start gap-4">
-              <Phone className="h-6 w-6 flex-shrink-0 text-gold" />
+      <section className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-2 md:px-8">
+        <div className="space-y-4">
+          <div className="rounded-xl border border-border bg-card p-4">
+            <div className="flex items-start gap-3">
+              <Phone className="h-5 w-5 flex-shrink-0 text-gold" />
               <div>
-                <h3 className="font-display text-lg font-bold text-primary">Call Us</h3>
-                <p className="mt-1 text-muted-foreground">
+                <h3 className="font-display text-base font-bold text-primary">Call Us</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
                   <a href="tel:+919882342456" className="hover:text-primary">9882342456</a><br />
                   <a href="tel:+919642166456" className="hover:text-primary">9642166456</a>
                 </p>
               </div>
             </div>
           </div>
-          <div className="rounded-2xl border border-border bg-card p-6">
-            <div className="flex items-start gap-4">
-              <Mail className="h-6 w-6 flex-shrink-0 text-gold" />
+          <div className="rounded-xl border border-border bg-card p-4">
+            <div className="flex items-start gap-3">
+              <Mail className="h-5 w-5 flex-shrink-0 text-gold" />
               <div>
-                <h3 className="font-display text-lg font-bold text-primary">Email</h3>
-                <a href="mailto:jdinfradeveloper@gmail.com" className="text-muted-foreground hover:text-primary">jdinfradeveloper@gmail.com</a>
+                <h3 className="font-display text-base font-bold text-primary">Email</h3>
+                <a href="mailto:jdinfradeveloper@gmail.com" className="text-sm text-muted-foreground hover:text-primary">jdinfradeveloper@gmail.com</a>
               </div>
             </div>
           </div>
-          <div className="rounded-2xl border border-border bg-card p-6">
-            <div className="flex items-start gap-4">
-              <MapPin className="h-6 w-6 flex-shrink-0 text-gold" />
+          <div className="rounded-xl border border-border bg-card p-4">
+            <div className="flex items-start gap-3">
+              <MapPin className="h-5 w-5 flex-shrink-0 text-gold" />
               <div>
-                <h3 className="font-display text-lg font-bold text-primary">Office Address</h3>
-                <p className="mt-1 text-muted-foreground">
+                <h3 className="font-display text-base font-bold text-primary">Office Address</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
                   H.NO. 6-2-897, Meeseva Road<br />
                   Near Venkateswara Swamy Temple<br />
                   Ramnagar, Ananthapuramu
@@ -65,24 +65,24 @@ function Contact() {
               </div>
             </div>
           </div>
-          <div className="rounded-2xl border border-border bg-card p-6">
-            <div className="flex items-start gap-4">
-              <MapPin className="h-6 w-6 flex-shrink-0 text-gold" />
+          <div className="rounded-xl border border-border bg-card p-4">
+            <div className="flex items-start gap-3">
+              <MapPin className="h-5 w-5 flex-shrink-0 text-gold" />
               <div>
-                <h3 className="font-display text-lg font-bold text-primary">Site Address</h3>
-                <p className="mt-1 text-muted-foreground">
+                <h3 className="font-display text-base font-bold text-primary">Site Address</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
                   Survey No 120, Kurugunta Village<br />
                   Kalyandurgam Main Road, Anantapur
                 </p>
               </div>
             </div>
           </div>
-          <div className="rounded-2xl border border-border bg-card p-6">
-            <div className="flex items-start gap-4">
-              <Clock className="h-6 w-6 flex-shrink-0 text-gold" />
+          <div className="rounded-xl border border-border bg-card p-4">
+            <div className="flex items-start gap-3">
+              <Clock className="h-5 w-5 flex-shrink-0 text-gold" />
               <div>
-                <h3 className="font-display text-lg font-bold text-primary">Business Hours</h3>
-                <p className="mt-1 text-muted-foreground">
+                <h3 className="font-display text-base font-bold text-primary">Business Hours</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
                   Monday to Saturday 9:00 AM to 7:00 PM<br />
                   Sunday 10:00 AM to 5:00 PM
                 </p>
@@ -93,11 +93,12 @@ function Contact() {
             href="https://wa.me/919642166456"
             target="_blank"
             rel="noreferrer"
-            className="flex items-center justify-center gap-2 rounded-full bg-green-600 px-6 py-4 font-semibold text-white shadow-lg transition hover:bg-green-700"
+            className="flex items-center justify-center gap-2 rounded-full bg-green-600 px-5 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-green-700"
           >
-            <MessageCircle className="h-5 w-5" /> WhatsApp Instant Chat
+            <MessageCircle className="h-4 w-4" /> WhatsApp Instant Chat
           </a>
         </div>
+
 
         <div className="rounded-3xl border border-gold/30 bg-accent/30 p-8">
           <h2 className="font-display text-3xl font-bold text-primary">Send Us an Enquiry</h2>
