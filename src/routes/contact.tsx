@@ -17,6 +17,24 @@ export const Route = createFileRoute("/contact")({
 
 function Contact() {
   const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ name: "", phone: "", budget: "Below 30 Lakhs", message: "" });
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError("");
+    const name = form.name.trim();
+    const phone = form.phone.trim();
+    if (!name || name.length > 100) { setError("Please enter a valid name"); return; }
+    if (!/^[0-9]{10}$/.test(phone)) { setError("Please enter a valid 10-digit phone number"); return; }
+    const message = form.message.trim().slice(0, 1000);
+
+    const text = `New Enquiry from Vishnu Kuteer website%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0ABudget: ${encodeURIComponent(form.budget)}%0AMessage: ${encodeURIComponent(message)}`;
+    window.open(`https://wa.me/919642166456?text=${text}`, "_blank", "noopener,noreferrer");
+    setSent(true);
+    setForm({ name: "", phone: "", budget: "Below 30 Lakhs", message: "" });
+  };
+
   return (
     <>
       <section className="bg-primary py-20 text-primary-foreground">
@@ -107,24 +125,41 @@ function Contact() {
           {sent ? (
             <div className="mt-8 rounded-xl border border-gold bg-card p-8 text-center">
               <h3 className="font-display text-2xl font-bold text-primary">Thank You</h3>
-              <p className="mt-2 text-muted-foreground">Your enquiry has been recorded. Our advisor will call you shortly.</p>
+              <p className="mt-2 text-muted-foreground">Your enquiry has been sent via WhatsApp. Our advisor will reach out shortly.</p>
+              <button onClick={() => setSent(false)} className="mt-4 text-sm font-semibold text-gold hover:underline">Send another enquiry</button>
             </div>
           ) : (
-            <form
-              onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-              className="mt-6 space-y-4"
-            >
+            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
               <div>
                 <label className="text-sm font-medium text-foreground">Name</label>
-                <input required type="text" className="mt-1 w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-gold" />
+                <input
+                  required
+                  type="text"
+                  maxLength={100}
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  className="mt-1 w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-gold"
+                />
               </div>
               <div>
                 <label className="text-sm font-medium text-foreground">Phone</label>
-                <input required type="tel" pattern="[0-9]{10}" className="mt-1 w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-gold" />
+                <input
+                  required
+                  type="tel"
+                  pattern="[0-9]{10}"
+                  maxLength={10}
+                  value={form.phone}
+                  onChange={(e) => setForm({ ...form, phone: e.target.value.replace(/\D/g, "") })}
+                  className="mt-1 w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-gold"
+                />
               </div>
               <div>
                 <label className="text-sm font-medium text-foreground">Budget</label>
-                <select className="mt-1 w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-gold">
+                <select
+                  value={form.budget}
+                  onChange={(e) => setForm({ ...form, budget: e.target.value })}
+                  className="mt-1 w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-gold"
+                >
                   <option>Below 30 Lakhs</option>
                   <option>30 to 50 Lakhs</option>
                   <option>50 to 75 Lakhs</option>
@@ -133,8 +168,15 @@ function Contact() {
               </div>
               <div>
                 <label className="text-sm font-medium text-foreground">Message</label>
-                <textarea rows={4} className="mt-1 w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-gold" />
+                <textarea
+                  rows={4}
+                  maxLength={1000}
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  className="mt-1 w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-gold"
+                />
               </div>
+              {error && <p className="text-sm font-medium text-destructive">{error}</p>}
               <button type="submit" className="w-full rounded-full bg-primary px-6 py-3.5 font-semibold text-primary-foreground transition hover:bg-primary/90">
                 Submit Enquiry
               </button>
