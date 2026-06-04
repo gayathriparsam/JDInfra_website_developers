@@ -17,6 +17,24 @@ export const Route = createFileRoute("/contact")({
 
 function Contact() {
   const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ name: "", phone: "", budget: "Below 30 Lakhs", message: "" });
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError("");
+    const name = form.name.trim();
+    const phone = form.phone.trim();
+    if (!name || name.length > 100) { setError("Please enter a valid name"); return; }
+    if (!/^[0-9]{10}$/.test(phone)) { setError("Please enter a valid 10-digit phone number"); return; }
+    const message = form.message.trim().slice(0, 1000);
+
+    const text = `New Enquiry from Vishnu Kuteer website%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0ABudget: ${encodeURIComponent(form.budget)}%0AMessage: ${encodeURIComponent(message)}`;
+    window.open(`https://wa.me/919642166456?text=${text}`, "_blank", "noopener,noreferrer");
+    setSent(true);
+    setForm({ name: "", phone: "", budget: "Below 30 Lakhs", message: "" });
+  };
+
   return (
     <>
       <section className="bg-primary py-20 text-primary-foreground">
