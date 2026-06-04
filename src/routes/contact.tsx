@@ -143,14 +143,14 @@ function Contact() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-20 md:px-8">
+      <section className="mx-auto max-w-5xl px-4 pb-16 md:px-8">
         <SectionHeading title="Find Us on the Map" />
-        <div className="mt-10 overflow-hidden rounded-2xl border border-border shadow-md">
+        <div className="mt-8 overflow-hidden rounded-xl border border-border shadow-sm">
           <iframe
             title="JD Infra Developers Location"
             src="https://www.google.com/maps?q=Kurugunta+Village+Kalyandurgam+Anantapur&output=embed"
             width="100%"
-            height="450"
+            height="320"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
