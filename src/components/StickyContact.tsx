@@ -1,15 +1,6 @@
-import { Phone, ArrowUp } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Phone } from "lucide-react";
 
 export function StickyContact() {
-  const [show, setShow] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > 400);
-    window.addEventListener("scroll", onScroll);
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <div className="fixed bottom-5 right-5 z-40 flex flex-col gap-3">
       <a
@@ -30,15 +21,6 @@ export function StickyContact() {
       >
         <Phone className="h-6 w-6" />
       </a>
-      {show && (
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          aria-label="Scroll to top"
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/90 text-primary shadow-lg transition hover:scale-110"
-        >
-          <ArrowUp className="h-5 w-5" />
-        </button>
-      )}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { MapPin, Home, DollarSign, Lock } from "lucide-react";
+import { Building2, Home, ClipboardList, Check, X } from "lucide-react";
 import streetView from "@/assets/street-view.jpg";
 import locationGrowth from "@/assets/location-growth.svg.asset.json";
 import appreciation from "@/assets/appreciation.svg.asset.json";
@@ -16,7 +16,7 @@ export const Route = createFileRoute("/investment")({
   component: Investment,
 });
 
-const bigReasons = [
+const reasons = [
   {
     n: "01",
     img: locationGrowth.url,
@@ -33,24 +33,39 @@ const bigReasons = [
   },
 ];
 
-const smallReasons = [
+const comparison = [
   {
-    n: "03",
+    title: "Apartment",
+    icon: Building2,
+    best: false,
+    points: [
+      { ok: false, t: "Shared walls and spaces" },
+      { ok: false, t: "Maintenance charges" },
+      { ok: false, t: "Limited privacy" },
+      { ok: false, t: "Slower appreciation" },
+    ],
+  },
+  {
+    title: "Vishnu Kuteer Villa",
     icon: Home,
-    title: "Lifestyle Plus Investment",
-    points: ["Premium living environment", "Secure gated community", "Long term asset value"],
+    best: true,
+    points: [
+      { ok: true, t: "Private gated villa" },
+      { ok: true, t: "No extra maintenance" },
+      { ok: true, t: "100 percent privacy" },
+      { ok: true, t: "High appreciation zone" },
+    ],
   },
   {
-    n: "04",
-    icon: DollarSign,
-    title: "Budget Plus Premium Advantage",
-    points: ["Affordable entry price", "Premium villa experience", "Better ROI than apartments"],
-  },
-  {
-    n: "05",
-    icon: Lock,
-    title: "Safe Investment",
-    points: ["Clear documentation", "AHUDA approved layout", "Trusted developer"],
+    title: "Plot",
+    icon: ClipboardList,
+    best: false,
+    points: [
+      { ok: false, t: "Construction burden on you" },
+      { ok: false, t: "No ready amenities" },
+      { ok: false, t: "Long wait period" },
+      { ok: false, t: "No gated security" },
+    ],
   },
 ];
 
@@ -68,34 +83,35 @@ function Investment() {
         </div>
       </section>
 
-      <section className="bg-primary py-16 text-primary-foreground md:py-20">
+      {/* 5 Compelling Reasons - now WHITE bg, dark text */}
+      <section className="bg-background py-16 text-foreground md:py-24">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">5 Compelling Reasons</p>
-            <h2 className="mt-3 font-display text-3xl font-bold md:text-5xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">Compelling Reasons</p>
+            <h2 className="mt-3 font-display text-3xl font-bold text-primary md:text-5xl">
               Why Invest in <span className="text-gold">Vishnu Kuteer</span>
             </h2>
             <div className="mx-auto mt-4 h-[2px] w-16 bg-gold" />
           </div>
 
-          <div className="mt-14 grid gap-6 lg:grid-cols-2">
-            {bigReasons.map((r) => (
-              <article key={r.n} className="overflow-hidden rounded-2xl border border-gold/20 bg-[#0f0c07]">
-                <div className="relative">
+          <div className="mt-14 grid gap-8 lg:grid-cols-2">
+            {reasons.map((r) => (
+              <article key={r.n} className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:shadow-xl">
+                <div className="relative bg-[#0f0c07]">
                   <span className="absolute left-4 top-4 z-10 inline-flex h-9 min-w-9 items-center justify-center rounded-full border border-gold/40 bg-black/40 px-3 font-display text-sm font-bold text-gold">
                     {r.n}
                   </span>
                   <img src={r.img} alt={r.title} className="block h-auto w-full" />
                 </div>
-                <div className="bg-[#1a1612] p-6 md:p-8">
-                  <h3 className="font-display text-xl font-bold md:text-2xl">{r.title}</h3>
+                <div className="p-6 md:p-8">
+                  <h3 className="font-display text-xl font-bold text-primary md:text-2xl">{r.title}</h3>
                   <div className="mt-2 h-[2px] w-12 bg-gold" />
-                  <p className="mt-4 text-sm text-primary-foreground/75 md:text-base">{r.desc}</p>
+                  <p className="mt-4 text-sm text-muted-foreground md:text-base">{r.desc}</p>
                   <ul className="mt-5 space-y-2.5 text-sm md:text-base">
                     {r.points.map((p) => (
                       <li key={p} className="flex items-start gap-3">
                         <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gold" />
-                        <span className="text-primary-foreground/85">{p}</span>
+                        <span className="text-foreground/85">{p}</span>
                       </li>
                     ))}
                   </ul>
@@ -103,21 +119,51 @@ function Investment() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="mt-6 grid gap-6 md:grid-cols-3">
-            {smallReasons.map(({ icon: Icon, ...r }) => (
-              <article key={r.n} className="rounded-2xl border border-gold/30 bg-[#1a1612] p-6 transition hover:border-gold md:p-7">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/30 bg-black/30">
-                  <Icon className="h-5 w-5 text-gold" />
+      {/* Villa vs Other Options */}
+      <section className="bg-primary py-16 text-primary-foreground md:py-24">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+          <div className="text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">Villa vs Other Options</p>
+            <h2 className="mt-3 font-display text-3xl font-bold md:text-5xl">
+              Why a Villa <span className="text-gold">Beats the Rest</span>
+            </h2>
+            <div className="mx-auto mt-4 h-[2px] w-16 bg-gold" />
+          </div>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-3 md:items-stretch">
+            {comparison.map(({ icon: Icon, ...c }) => (
+              <article
+                key={c.title}
+                className={`relative flex flex-col rounded-2xl p-6 md:p-8 ${
+                  c.best
+                    ? "border-2 border-gold bg-[#1a1612] shadow-2xl md:-translate-y-2"
+                    : "border border-gold/15 bg-[#15110d]"
+                }`}
+              >
+                {c.best && (
+                  <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full border border-gold bg-primary px-4 py-1 text-[10px] font-semibold tracking-[0.25em] text-gold">
+                    BEST CHOICE
+                  </span>
+                )}
+                <div className={`mx-auto flex h-14 w-14 items-center justify-center rounded-full ${c.best ? "bg-gold/15" : "bg-white/5"}`}>
+                  <Icon className={`h-6 w-6 ${c.best ? "text-gold" : "text-primary-foreground/60"}`} />
                 </div>
-                <p className="mt-5 text-xs font-semibold tracking-[0.2em] text-gold">{r.n}</p>
-                <h3 className="mt-1 font-display text-xl font-bold">{r.title}</h3>
-                <div className="mt-2 h-[2px] w-10 bg-gold" />
-                <ul className="mt-4 space-y-2 text-sm">
-                  {r.points.map((p) => (
-                    <li key={p} className="flex items-start gap-3">
-                      <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gold" />
-                      <span className="text-primary-foreground/80">{p}</span>
+                <h3 className={`mt-5 text-center font-display text-xl font-bold md:text-2xl ${c.best ? "text-primary-foreground" : "text-primary-foreground/80"}`}>
+                  {c.title}
+                </h3>
+                <ul className="mt-6 space-y-3 text-center text-sm md:text-base">
+                  {c.points.map((p) => (
+                    <li
+                      key={p.t}
+                      className={`flex items-center justify-center gap-2 ${
+                        p.ok ? "font-semibold text-gold" : "text-primary-foreground/65"
+                      }`}
+                    >
+                      {p.ok ? <Check className="h-4 w-4 flex-shrink-0" /> : <X className="h-4 w-4 flex-shrink-0 opacity-50" />}
+                      <span>{p.t}</span>
                     </li>
                   ))}
                 </ul>
