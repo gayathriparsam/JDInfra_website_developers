@@ -84,6 +84,42 @@ function Investment() {
         </div>
       </section>
 
+      {/* Why Vishnu Kuteer - white intro with image */}
+      <section className="bg-background py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">Why Vishnu Kuteer</p>
+              <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-primary md:text-5xl">
+                A Smart Asset in a <span className="text-gold">Fast Growing Zone</span>
+              </h2>
+              <div className="mt-4 h-[2px] w-16 bg-gold" />
+              <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
+                Kalyandurg Road is one of Anantapur most promising real estate corridors. With growing infrastructure, improving connectivity and rising residential demand, property values here are on a consistent upward trajectory.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+                Vishnu Kuteer gives you early mover advantage. Premium villa quality at accessible pricing, backed by a trusted developer.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link to="/contact" className="rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90 md:text-base">
+                  Book a Consultation
+                </Link>
+                <Link to="/projects" className="rounded-full border border-primary px-7 py-3 text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground md:text-base">
+                  View the Project
+                </Link>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-2xl shadow-xl">
+              <img src={eastVilla.url} alt="Vishnu Kuteer East Facing Villa" className="h-full w-full object-cover" />
+              <div className="absolute bottom-4 left-4 rounded-lg bg-gold px-4 py-2 text-primary shadow-lg">
+                <div className="font-display text-base font-bold leading-none">Now</div>
+                <div className="text-[10px] uppercase tracking-widest">Selling</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 5 Compelling Reasons - now WHITE bg, dark text */}
       <section className="bg-background py-16 text-foreground md:py-24">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
