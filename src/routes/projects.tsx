@@ -1,12 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SectionHeading } from "@/components/SectionHeading";
-import { Bed, Bath, Car, Maximize, Check } from "lucide-react";
-import villa from "@/assets/villa.jpg";
+import { Bed, Bath, Car, Maximize, Check, MapPin } from "lucide-react";
 import simplex from "@/assets/simplex.jpg";
 import streetView from "@/assets/street-view.jpg";
 import archGate from "@/assets/arch-gate.jpg";
-import layoutTop from "@/assets/layout-top.jpg.asset.json";
-import archModel from "@/assets/arch-model.jpg.asset.json";
+import eastFacing from "@/assets/east-facing-villa.jpg.asset.json";
+import archModelNew from "@/assets/arch-model-new.jpg.asset.json";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -15,7 +14,6 @@ export const Route = createFileRoute("/projects")({
       { name: "description", content: "Explore Vishnu Kuteer premium duplex and simplex villas on Kalyandurg Road Anantapur." },
       { property: "og:title", content: "Vishnu Kuteer Villas | Projects" },
       { property: "og:description", content: "Premium duplex and simplex villas in Anantapur." },
-      { property: "og:image", content: villa },
     ],
   }),
   component: Projects,
@@ -24,7 +22,7 @@ export const Route = createFileRoute("/projects")({
 const configs = [
   {
     title: "Duplex Villa",
-    img: villa,
+    img: archModelNew.url,
     site: "32 x 45 (3.3 Cents)",
     bhk: "3 BHK",
     bath: "3 Bath",
@@ -76,10 +74,56 @@ function Projects() {
         </div>
       </section>
 
-      {/* Project visuals */}
-      <section className="mx-auto grid max-w-7xl gap-6 px-4 py-14 md:grid-cols-2 md:px-8">
-        <img src={archModel.url} alt="Grand Entrance Arch" className="h-72 w-full rounded-2xl object-cover shadow-xl md:h-96" />
-        <img src={layoutTop.url} alt="Project Layout Top View" className="h-72 w-full rounded-2xl object-cover shadow-xl md:h-96" />
+      {/* Premium Duplex Villas Overview (white) */}
+      <section className="bg-background py-16 md:py-24">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 md:px-8 lg:grid-cols-2 lg:items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">Vishnu Kuteer . Anantapur</p>
+            <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-primary md:text-5xl">
+              Premium <span className="text-gold">Duplex Villas</span>
+            </h2>
+            <div className="mt-3 h-[2px] w-16 bg-gold" />
+            <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
+              Vishnu Kuteer is a premium residential villa project designed for modern families seeking{" "}
+              <span className="font-semibold text-foreground">comfort, elegance, and long term value</span>. Set on the fast developing Kalyandurg Road, it offers a rare combination of urban connectivity and serene living.
+            </p>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Configuration</p>
+                <p className="mt-2 font-display text-lg font-bold text-primary">Duplex Plus Simplex</p>
+              </div>
+              <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Location</p>
+                <p className="mt-2 font-display text-lg font-bold text-primary">Kalyandurg Road Anantapur</p>
+              </div>
+              <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Area</p>
+                <p className="mt-2 font-display text-lg font-bold text-primary">Up to 2020 Sq Ft</p>
+              </div>
+              <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Status</p>
+                <p className="mt-2 font-display text-lg font-bold text-green-700">Now Selling</p>
+              </div>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link to="/contact" className="rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90">Book a Site Visit</Link>
+              <Link to="/investment" className="rounded-full border border-primary px-7 py-3 text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground">View Investment Plans</Link>
+            </div>
+          </div>
+
+          <div className="relative">
+            <img src={eastFacing.url} alt="Vishnu Kuteer East Facing Premium Duplex Villa" className="w-full rounded-2xl object-cover shadow-2xl" />
+            <div className="absolute right-4 top-4 rounded-lg bg-gold px-4 py-2 text-center text-primary shadow-lg md:right-6 md:top-6">
+              <p className="font-display text-base font-bold leading-none md:text-lg">3 BHK</p>
+              <p className="mt-1 text-[10px] font-semibold tracking-[0.2em] md:text-xs">DUPLEX VILLA</p>
+            </div>
+            <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-background/95 px-4 py-2 text-xs font-medium text-primary shadow-md md:text-sm">
+              <MapPin className="h-4 w-4 text-gold" /> Kalyandurg Road Anantapur
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-4 pb-16 md:px-8">
