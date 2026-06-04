@@ -1,7 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CheckCircle2, MapPin, Home as HomeIcon, TrendingUp, Shield, Sparkles } from "lucide-react";
+import {
+  CheckCircle2, MapPin, Home as HomeIcon, TrendingUp, Shield, Sparkles,
+  FileText, Menu, Droplet, Leaf, Zap, Waves, Database, Smile, Sun, Camera, CloudRain,
+  Compass, LayoutGrid, Maximize, Ruler,
+} from "lucide-react";
 import villa from "@/assets/villa.jpg";
-import simplex from "@/assets/simplex.jpg";
 import streetView from "@/assets/street-view.jpg";
 import archGate from "@/assets/arch-gate.jpg";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -20,27 +23,35 @@ export const Route = createFileRoute("/")({
 });
 
 const highlights = [
-  "Premium Duplex and Simplex Villas",
-  "East West and North Facing Options",
-  "2 BHK and 3 BHK Configurations",
-  "Approx 2000 Sqft Duplex Villas",
-  "Vastu Compliant Planning",
-  "Contemporary Elevation Design",
+  { icon: HomeIcon, t: "Premium Duplex and Simplex Villas", d: "Thoughtfully designed for modern families" },
+  { icon: Compass, t: "East West and North Facing Options", d: "Choose your preferred orientation" },
+  { icon: LayoutGrid, t: "2 BHK and 3 BHK Configurations", d: "Flexible floor plans to suit your needs" },
+  { icon: Maximize, t: "Approx 2000 Sqft Duplex Villas", d: "Generous living space for every room" },
+  { icon: Ruler, t: "Vastu Compliant Planning", d: "Harmonious energy in every corner" },
+  { icon: Sparkles, t: "Contemporary Elevation Design", d: "Modern aesthetics with timeless appeal" },
 ];
 
 const features = [
-  "Grand Entrance Arch",
-  "CC Internal Roads",
-  "Underground Drainage System",
-  "Avenue Plantation",
-  "Underground Electrification",
-  "Panchayat Water Supply",
-  "Overhead Water Tank",
-  "Children Play Area",
-  "Solar Fencing and Street Lights",
-  "Rainwater Harvesting",
-  "24x7 CCTV Surveillance",
-  "Tiles for Pavement",
+  { icon: FileText, t: "Grand Entrance Arch" },
+  { icon: Menu, t: "CC Internal Roads" },
+  { icon: Droplet, t: "Underground Drainage" },
+  { icon: Leaf, t: "Avenue Plantation" },
+  { icon: Zap, t: "Underground Electrification" },
+  { icon: Waves, t: "Panchayat Water Supply" },
+  { icon: Database, t: "Overhead Water Tank" },
+  { icon: Smile, t: "Children Play Area" },
+  { icon: Sun, t: "Solar Fencing and Lights" },
+  { icon: Camera, t: "24x7 CCTV Surveillance" },
+  { icon: CloudRain, t: "Rainwater Harvesting" },
+  { icon: Shield, t: "Gated Community" },
+];
+
+const locations = [
+  { t: "Kalyandurg Road", s: "Prime Residential Zone" },
+  { t: "Near Kurugunta Village", s: "Serene Neighbourhood" },
+  { t: "Close to Whitefield Area", s: "Emerging Growth Corridor" },
+  { t: "Delhi Public School", s: "Nearby Educational Institutions" },
+  { t: "Bangalore Hyderabad Highway", s: "Easy Access and Connectivity" },
 ];
 
 function Home() {
@@ -53,37 +64,36 @@ function Home() {
           style={{ backgroundImage: `url(${villa})` }}
         />
         <div className="absolute inset-0 -z-10 gradient-hero" />
-        <div className="mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-center px-4 py-24 text-primary-foreground md:px-8">
-          <p className="animate-fade-up text-sm font-semibold uppercase tracking-[0.3em] text-gold">
+        <div className="mx-auto flex min-h-[78vh] max-w-7xl flex-col justify-center px-4 py-20 text-primary-foreground md:px-8">
+          <p className="animate-fade-up text-xs font-semibold uppercase tracking-[0.3em] text-gold md:text-sm">
             JD Infra Developers • Anantapur
           </p>
-          <h1 className="mt-4 max-w-4xl animate-fade-up font-display text-5xl font-bold leading-tight md:text-7xl">
+          <h1 className="mt-3 max-w-4xl animate-fade-up font-display text-3xl font-bold leading-tight sm:text-4xl md:text-5xl lg:text-6xl">
             Vishnu Kuteer
             <span className="block text-gold">Premium Villas in Kalyandurg Road</span>
           </h1>
-          <p className="mt-6 max-w-2xl animate-fade-up text-lg text-white/85 md:text-xl">
-            Elegant living at a budget friendly price. Modern design. Prime location. Future ready investment.
+          <p className="mt-5 max-w-2xl animate-fade-up text-sm leading-relaxed text-white/85 md:text-base">
+            Elegant living at a budget friendly price. Modern design.
+            <br />
+            Prime location. Future ready investment.
           </p>
-          <blockquote className="mt-6 max-w-2xl animate-fade-up border-l-2 border-gold pl-4 font-display text-lg italic text-white/90">
-            True luxury is not about price. It is about the lifestyle you create.
-          </blockquote>
-          <div className="mt-10 flex animate-fade-up flex-wrap gap-4">
-            <a href="tel:+919642166456" className="rounded-full bg-gold px-7 py-3.5 font-semibold text-primary shadow-lg transition hover:scale-105">
+          <div className="mt-8 flex animate-fade-up flex-wrap gap-3">
+            <a href="tel:+919642166456" className="rounded-full bg-gold px-6 py-3 text-sm font-semibold text-primary shadow-lg transition hover:scale-105">
               Book a Call
             </a>
-            <a href="https://wa.me/919642166456" target="_blank" rel="noreferrer" className="rounded-full border-2 border-white/70 px-7 py-3.5 font-semibold text-white transition hover:bg-white hover:text-primary">
+            <a href="https://wa.me/919642166456" target="_blank" rel="noreferrer" className="rounded-full border-2 border-white/70 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-primary">
               WhatsApp Now
             </a>
-            <Link to="/contact" className="rounded-full border-2 border-gold px-7 py-3.5 font-semibold text-gold transition hover:bg-gold hover:text-primary">
+            <Link to="/contact" className="rounded-full border-2 border-gold px-6 py-3 text-sm font-semibold text-gold transition hover:bg-gold hover:text-primary">
               Schedule Site Visit
             </Link>
           </div>
         </div>
 
         {/* AHUDA Badge */}
-        <div className="absolute right-4 top-24 hidden animate-float-slow rounded-full border-2 border-gold bg-primary/80 px-5 py-3 text-center text-primary-foreground backdrop-blur md:block">
-          <div className="text-xs uppercase tracking-widest text-gold">Exclusive</div>
-          <div className="font-display text-base font-bold">AHUDA Approved</div>
+        <div className="absolute right-4 top-20 hidden animate-float-slow rounded-full border-2 border-gold bg-primary/80 px-4 py-2 text-center text-primary-foreground backdrop-blur md:block">
+          <div className="text-[10px] uppercase tracking-widest text-gold">Exclusive</div>
+          <div className="font-display text-sm font-bold">AHUDA Approved</div>
           <div className="text-[10px] opacity-80">Site and House</div>
         </div>
       </section>
@@ -98,8 +108,8 @@ function Home() {
             { t: "Modern Living", s: "Designed for You" },
           ].map((b) => (
             <div key={b.t} className="text-center">
-              <div className="font-display text-lg font-bold text-gold md:text-xl">{b.t}</div>
-              <div className="text-sm opacity-80">{b.s}</div>
+              <div className="font-display text-base font-bold text-gold md:text-lg">{b.t}</div>
+              <div className="text-xs opacity-80">{b.s}</div>
             </div>
           ))}
         </div>
@@ -107,13 +117,13 @@ function Home() {
 
       {/* AHUDA HIGHLIGHT */}
       <section className="bg-accent">
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 py-12 text-center md:flex-row md:px-8 md:text-left">
-          <Shield className="h-14 w-14 flex-shrink-0 text-gold" />
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 px-4 py-10 text-center md:flex-row md:px-8 md:text-left">
+          <Shield className="h-12 w-12 flex-shrink-0 text-gold" />
           <div className="flex-1">
-            <h3 className="font-display text-2xl font-bold text-primary md:text-3xl">
+            <h3 className="font-display text-lg font-bold text-primary md:text-2xl">
               The one and only AHUDA approved project on Kalyandurgam Road
             </h3>
-            <p className="mt-2 text-muted-foreground">
+            <p className="mt-2 text-sm text-muted-foreground">
               Both the site and houses carry full AHUDA approvals. A rare assurance of legal clarity and long term value.
             </p>
           </div>
@@ -121,92 +131,137 @@ function Home() {
       </section>
 
       {/* OVERVIEW */}
-      <section className="mx-auto max-w-7xl px-4 py-20 md:px-8">
-        <div className="grid items-center gap-12 md:grid-cols-2">
+      <section className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20">
+        <div className="grid items-center gap-10 md:grid-cols-2">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">About the Project</p>
-            <h2 className="mt-3 font-display text-4xl font-bold text-primary md:text-5xl">Vishnu Kuteer</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">About the Project</p>
+            <h2 className="mt-3 font-display text-3xl font-bold text-primary md:text-4xl">Vishnu Kuteer</h2>
             <div className="mt-4 h-[2px] w-16 bg-gold" />
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-5 text-base leading-relaxed text-muted-foreground">
               A thoughtfully crafted premium villa community by JD Infra Developers, located on the fast developing Kalyandurg Road in Anantapur.
             </p>
-            <p className="mt-4 text-muted-foreground">
+            <p className="mt-3 text-sm text-muted-foreground">
               Designed for families and investors alike, this project blends elegant architecture, smart layouts and modern infrastructure to deliver a refined lifestyle at an accessible price.
             </p>
-            <blockquote className="mt-6 border-l-2 border-gold pl-4 font-display italic text-primary">
-              Luxury becomes meaningful when it is within reach.
-            </blockquote>
-            <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
+            <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
               {[["2 and 3", "BHK"], ["2000", "Sqft"], ["100%", "Vastu"], ["3", "Facings"]].map(([n, l]) => (
-                <div key={l} className="rounded-lg border border-border bg-card p-4 text-center">
-                  <div className="font-display text-2xl font-bold text-primary">{n}</div>
-                  <div className="text-xs text-muted-foreground">{l}</div>
+                <div key={l} className="rounded-lg border border-border bg-card p-3 text-center">
+                  <div className="font-display text-xl font-bold text-primary">{n}</div>
+                  <div className="text-[11px] text-muted-foreground">{l}</div>
                 </div>
               ))}
             </div>
           </div>
           <div className="relative">
             <img src={villa} alt="Vishnu Kuteer East Facing Villa" className="rounded-2xl shadow-2xl" />
-            <div className="absolute bottom-4 right-4 rounded-lg bg-primary px-4 py-3 text-primary-foreground shadow-xl">
-              <div className="text-xs uppercase tracking-wider text-gold">AHUDA</div>
-              <div className="font-display font-bold">Approved Project</div>
+            <div className="absolute bottom-4 right-4 rounded-lg bg-primary px-3 py-2 text-primary-foreground shadow-xl">
+              <div className="text-[10px] uppercase tracking-wider text-gold">AHUDA</div>
+              <div className="font-display text-sm font-bold">Approved Project</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* HIGHLIGHTS */}
-      <section className="bg-secondary py-20">
+      {/* CRAFTED FOR PREMIUM LIVING — Highlights + Features two-column */}
+      <section className="bg-secondary py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
-          <SectionHeading eyebrow="Villa Highlights" title="Designed for Modern Living" />
-          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {highlights.map((h) => (
-              <div key={h} className="flex items-start gap-3 rounded-lg border border-border bg-card p-5 transition hover:border-gold hover:shadow-md">
-                <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-gold" />
-                <span className="font-medium text-foreground">{h}</span>
+          <SectionHeading
+            eyebrow="Crafted for Premium Living"
+            title="Everything You Need, Nothing Else"
+            sub="A complete villa community designed around modern family life and long term value."
+          />
+
+          <div className="mt-12 grid gap-10 lg:grid-cols-2">
+            {/* Villa Highlights */}
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">What You Get</p>
+              <h3 className="mt-2 font-display text-2xl font-bold text-primary md:text-3xl">Villa Highlights</h3>
+              <div className="mt-6 divide-y divide-border rounded-2xl border border-border bg-card">
+                {highlights.map(({ icon: Icon, t, d }) => (
+                  <div key={t} className="flex items-start gap-4 p-4 md:p-5">
+                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-accent">
+                      <Icon className="h-5 w-5 text-gold" />
+                    </div>
+                    <div>
+                      <div className="font-display text-base font-bold text-primary">{t}</div>
+                      <div className="text-xs text-muted-foreground">{d}</div>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Project Features */}
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">Infrastructure</p>
+              <h3 className="mt-2 font-display text-2xl font-bold text-primary md:text-3xl">Project Features</h3>
+              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {features.map(({ icon: Icon, t }) => (
+                  <div key={t} className="flex items-center gap-3 rounded-xl border border-border bg-card p-3 transition hover:border-gold hover:shadow-sm">
+                    <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md bg-accent">
+                      <Icon className="h-4 w-4 text-gold" />
+                    </div>
+                    <span className="text-sm font-medium text-foreground">{t}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* FEATURES */}
-      <section className="mx-auto max-w-7xl px-4 py-20 md:px-8">
-        <div className="grid items-center gap-12 md:grid-cols-2">
+      {/* LOCATION ADVANTAGE */}
+      <section className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20">
+        <SectionHeading
+          eyebrow="Where We Are"
+          title="Location Advantage"
+          sub="Strategically located in a high growth corridor of Anantapur."
+        />
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {locations.map((l) => (
+            <div key={l.t} className="rounded-2xl border border-border bg-card p-5 transition hover:border-gold hover:shadow-md">
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent">
+                <MapPin className="h-5 w-5 text-gold" />
+              </div>
+              <h4 className="mt-4 font-display text-base font-bold text-primary">{l.t}</h4>
+              <p className="mt-1 text-xs font-medium text-gold">{l.s}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FEATURE IMAGE */}
+      <section className="mx-auto max-w-7xl px-4 pb-16 md:px-8 md:pb-20">
+        <div className="grid items-center gap-10 md:grid-cols-2">
           <img src={archGate} alt="Grand Entrance Arch" className="rounded-2xl shadow-xl" />
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Project Features</p>
-            <h2 className="mt-3 font-display text-4xl font-bold text-primary md:text-5xl">Premium Infrastructure</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Built to Last</p>
+            <h2 className="mt-3 font-display text-3xl font-bold text-primary md:text-4xl">A Community Crafted with Care</h2>
             <div className="mt-4 h-[2px] w-16 bg-gold" />
-            <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {features.map((f) => (
-                <div key={f} className="flex items-center gap-2 text-sm">
-                  <Sparkles className="h-4 w-4 flex-shrink-0 text-gold" />
-                  <span>{f}</span>
-                </div>
-              ))}
-            </div>
+            <p className="mt-5 text-base text-muted-foreground">
+              Every detail from the grand entrance arch to the smallest landscape choice has been considered. Vishnu Kuteer combines elegant elevation, smart planning and dependable infrastructure to offer a truly premium villa lifestyle.
+            </p>
           </div>
         </div>
       </section>
 
       {/* STREET VIEW */}
       <section className="relative isolate overflow-hidden">
-        <img src={streetView} alt="Vishnu Kuteer Street View" className="h-[55vh] w-full object-cover" />
+        <img src={streetView} alt="Vishnu Kuteer Street View" className="h-[45vh] w-full object-cover md:h-[55vh]" />
         <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 mx-auto max-w-7xl px-4 pb-12 text-primary-foreground md:px-8">
-          <h3 className="font-display text-3xl font-bold md:text-5xl">A Community Built on Trust</h3>
-          <p className="mt-3 max-w-2xl text-lg opacity-90">
+        <div className="absolute inset-x-0 bottom-0 mx-auto max-w-7xl px-4 pb-10 text-primary-foreground md:px-8">
+          <h3 className="font-display text-2xl font-bold md:text-4xl">A Community Built on Trust</h3>
+          <p className="mt-2 max-w-2xl text-sm opacity-90 md:text-base">
             Gated layout. Solar street lights. CCTV surveillance. Peace of mind by design.
           </p>
         </div>
       </section>
 
       {/* WHY */}
-      <section className="bg-secondary py-20">
+      <section className="bg-secondary py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           <SectionHeading eyebrow="Why Choose Us" title="Why Vishnu Kuteer" />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { i: HomeIcon, t: "Premium Lifestyle", d: "At a genuinely budget friendly price." },
               { i: TrendingUp, t: "Rapid Growth Corridor", d: "Kalyandurg Road is rapidly developing." },
@@ -214,8 +269,8 @@ function Home() {
               { i: MapPin, t: "Ideal for Investors", d: "High appreciation in an emerging zone." },
             ].map(({ i: Icon, t, d }) => (
               <div key={t} className="rounded-2xl border border-border bg-card p-6 transition hover:border-gold hover:shadow-lg">
-                <Icon className="h-10 w-10 text-gold" />
-                <h3 className="mt-4 font-display text-xl font-bold text-primary">{t}</h3>
+                <Icon className="h-9 w-9 text-gold" />
+                <h3 className="mt-3 font-display text-lg font-bold text-primary">{t}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{d}</p>
               </div>
             ))}
@@ -224,17 +279,17 @@ function Home() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="mx-auto max-w-5xl px-4 py-20 text-center md:px-8">
-        <h2 className="font-display text-4xl font-bold text-primary md:text-5xl">
+      <section className="mx-auto max-w-5xl px-4 py-16 text-center md:px-8 md:py-20">
+        <h2 className="font-display text-3xl font-bold text-primary md:text-4xl">
           Own Your Premium Villa in Kalyandurg Road Today
         </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
+        <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">
           Book a personal site visit and explore the only AHUDA approved villa community on Kalyandurgam Road.
         </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <a href="tel:+919642166456" className="rounded-full bg-primary px-8 py-3.5 font-semibold text-primary-foreground transition hover:bg-primary/90">Call Now</a>
-          <a href="https://wa.me/919642166456" target="_blank" rel="noreferrer" className="rounded-full bg-gold px-8 py-3.5 font-semibold text-primary transition hover:scale-105">WhatsApp</a>
-          <Link to="/contact" className="rounded-full border-2 border-primary px-8 py-3.5 font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground">Book Visit</Link>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <a href="tel:+919642166456" className="rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90">Call Now</a>
+          <a href="https://wa.me/919642166456" target="_blank" rel="noreferrer" className="rounded-full bg-gold px-7 py-3 text-sm font-semibold text-primary transition hover:scale-105">WhatsApp</a>
+          <Link to="/contact" className="rounded-full border-2 border-primary px-7 py-3 text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground">Book Visit</Link>
         </div>
       </section>
     </>
