@@ -1,0 +1,50 @@
+import { Link } from "@tanstack/react-router";
+import { Phone, Mail, MapPin } from "lucide-react";
+import logo from "@/assets/logo.jpg";
+
+export function SiteFooter() {
+  return (
+    <footer className="mt-24 border-t border-border bg-primary text-primary-foreground">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-4 md:px-8">
+        <div>
+          <div className="flex items-center gap-3">
+            <img src={logo} alt="JD Infra Developers" className="h-12 w-12 rounded-full ring-2 ring-gold" />
+            <span className="font-display text-xl font-bold">JD Infra Developers</span>
+          </div>
+          <p className="mt-4 text-sm opacity-80">
+            Premium villa developments in Anantapur. Where budget meets elegance.
+          </p>
+        </div>
+        <div>
+          <h4 className="font-display text-lg text-gold">Explore</h4>
+          <ul className="mt-4 space-y-2 text-sm">
+            <li><Link to="/" className="hover:text-gold">Home</Link></li>
+            <li><Link to="/about" className="hover:text-gold">About</Link></li>
+            <li><Link to="/projects" className="hover:text-gold">Projects</Link></li>
+            <li><Link to="/investment" className="hover:text-gold">Investment Advantage</Link></li>
+            <li><Link to="/contact" className="hover:text-gold">Contact Us</Link></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="font-display text-lg text-gold">Office</h4>
+          <p className="mt-4 text-sm opacity-90">
+            H.NO. 6-2-897, Meeseva Road<br />
+            Near Venkateswara Swamy Temple<br />
+            Ramnagar, Ananthapuramu
+          </p>
+        </div>
+        <div>
+          <h4 className="font-display text-lg text-gold">Reach Us</h4>
+          <ul className="mt-4 space-y-3 text-sm">
+            <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4 text-gold" /> <span>9882342456<br />9642166456</span></li>
+            <li className="flex items-start gap-2"><Mail className="mt-0.5 h-4 w-4 text-gold" /> jdinfradeveloper@gmail.com</li>
+            <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 text-gold" /> Survey No 120, Kurugunta Village, Kalyandurgam Main Road, Anantapur</li>
+          </ul>
+        </div>
+      </div>
+      <div className="border-t border-primary-foreground/10 py-5 text-center text-xs opacity-70">
+        © {new Date().getFullYear()} JD Infra Developers. All rights reserved.
+      </div>
+    </footer>
+  );
+}
