@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CheckCircle2, MapPin, Home, TrendingUp, Shield, Sparkles } from "lucide-react";
+import { CheckCircle2, MapPin, Home as HomeIcon, TrendingUp, Shield, Sparkles } from "lucide-react";
 import villa from "@/assets/villa.jpg";
 import simplex from "@/assets/simplex.jpg";
 import streetView from "@/assets/street-view.jpg";
