@@ -8,8 +8,8 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-4 md:px-8">
         <div>
           <div className="flex items-center gap-3">
-            <img src={logo} alt="JD Infra Developers" className="h-12 w-12 rounded-full ring-2 ring-gold" />
-            <span className="font-display text-xl font-bold">JD Infra Developers</span>
+            <img src={logo} alt="JD Infra Developers" className="h-11 w-11 rounded-md object-cover" />
+            <span className="font-display text-lg font-bold">JD Infra Developers</span>
           </div>
           <p className="mt-4 text-sm opacity-80">
             Premium villa developments in Anantapur. Where budget meets elegance.
@@ -36,9 +36,9 @@ export function SiteFooter() {
         <div>
           <h4 className="font-display text-lg text-gold">Reach Us</h4>
           <ul className="mt-4 space-y-3 text-sm">
-            <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4 text-gold" /> <span>9882342456<br />9642166456</span></li>
-            <li className="flex items-start gap-2"><Mail className="mt-0.5 h-4 w-4 text-gold" /> jdinfradeveloper@gmail.com</li>
-            <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 text-gold" /> Survey No 120, Kurugunta Village, Kalyandurgam Main Road, Anantapur</li>
+            <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4 text-gold" /><span>9882342456<br />9642166456</span></li>
+            <li className="flex items-start gap-2"><Mail className="mt-0.5 h-4 w-4 text-gold" /><span>jdinfradeveloper@gmail.com</span></li>
+            <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 text-gold" /><span>Survey No 120, Kurugunta Village, Kalyandurgam Main Road, Anantapur</span></li>
           </ul>
         </div>
       </div>
