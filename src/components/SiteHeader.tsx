@@ -15,21 +15,21 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="JD Infra Developers" className="h-12 w-12 rounded-full object-cover ring-2 ring-gold" />
+          <img src={logo} alt="JD Infra Developers" className="h-10 w-10 rounded-md object-cover md:h-11 md:w-11" />
           <div className="leading-tight">
-            <div className="font-display text-xl font-bold text-primary md:text-2xl">JD Infra Developers</div>
-            <div className="text-xs text-muted-foreground">Anantapur</div>
+            <div className="font-display text-base font-bold text-primary md:text-lg">JD Infra Developers</div>
+            <div className="text-[10px] uppercase tracking-wider text-muted-foreground md:text-xs">Anantapur</div>
           </div>
         </Link>
-        <nav className="hidden items-center gap-2 lg:flex">
+        <nav className="hidden items-center gap-1 lg:flex">
           {nav.map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className="rounded-md px-4 py-2 text-lg font-medium text-foreground transition-colors hover:bg-accent hover:text-primary"
-              activeProps={{ className: "rounded-md px-4 py-2 text-lg font-semibold text-primary bg-accent" }}
+              className="rounded-md px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-primary"
+              activeProps={{ className: "rounded-md px-3 py-2 text-sm font-semibold text-primary bg-accent" }}
               activeOptions={{ exact: true }}
             >
               {n.label}
@@ -38,12 +38,12 @@ export function SiteHeader() {
         </nav>
         <a
           href="tel:+919642166456"
-          className="hidden rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90 lg:inline-flex"
+          className="hidden rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground transition hover:bg-primary/90 lg:inline-flex"
         >
           Book a Call
         </a>
         <button className="lg:hidden" onClick={() => setOpen(!open)} aria-label="Menu">
-          {open ? <X className="h-7 w-7 text-primary" /> : <Menu className="h-7 w-7 text-primary" />}
+          {open ? <X className="h-6 w-6 text-primary" /> : <Menu className="h-6 w-6 text-primary" />}
         </button>
       </div>
       {open && (
@@ -54,14 +54,14 @@ export function SiteHeader() {
                 key={n.to}
                 to={n.to}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-3 text-lg font-medium text-foreground hover:bg-accent"
-                activeProps={{ className: "rounded-md px-3 py-3 text-lg font-semibold text-primary bg-accent" }}
+                className="rounded-md px-3 py-3 text-base font-medium text-foreground hover:bg-accent"
+                activeProps={{ className: "rounded-md px-3 py-3 text-base font-semibold text-primary bg-accent" }}
                 activeOptions={{ exact: true }}
               >
                 {n.label}
               </Link>
             ))}
-            <a href="tel:+919642166456" className="mt-2 rounded-full bg-primary px-5 py-3 text-center font-semibold text-primary-foreground">
+            <a href="tel:+919642166456" className="mt-2 rounded-full bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground">
               Book a Call
             </a>
           </nav>
