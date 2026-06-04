@@ -208,7 +208,7 @@ function Home() {
           <SectionHeading eyebrow="Why Choose Us" title="Why Vishnu Kuteer" />
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {[
-              { i: Home, t: "Premium Lifestyle", d: "At a genuinely budget friendly price." },
+              { i: HomeIcon, t: "Premium Lifestyle", d: "At a genuinely budget friendly price." },
               { i: TrendingUp, t: "Rapid Growth Corridor", d: "Kalyandurg Road is rapidly developing." },
               { i: Shield, t: "Secure Gated Community", d: "24x7 CCTV and solar fencing for safety." },
               { i: MapPin, t: "Ideal for Investors", d: "High appreciation in an emerging zone." },
