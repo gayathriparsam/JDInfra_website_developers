@@ -156,28 +156,28 @@ function Projects() {
       </section>
 
       {/* Premium Specifications */}
-      <section className="bg-primary py-16 text-primary-foreground md:py-20">
+      <section className="bg-background py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div className="order-2 lg:order-1">
-              <img src={archGate} alt="Vishnu Kuteer Villa" className="w-full rounded-2xl object-cover shadow-2xl" />
+              <img src={archGate} alt="Vishnu Kuteer Villa" className="aspect-[4/3] w-full rounded-2xl object-cover shadow-xl" />
             </div>
             <div className="order-1 lg:order-2">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">What You Get</p>
-              <h2 className="mt-3 font-display text-3xl font-bold md:text-5xl">
+              <h2 className="mt-3 font-display text-3xl font-bold text-primary md:text-5xl">
                 Premium <span className="text-gold">Specifications</span>
               </h2>
               <div className="mt-3 h-[2px] w-16 bg-gold" />
 
-              <div className="mt-8 space-y-4">
+              <div className="mt-6 space-y-3">
                 {specs.map((s) => (
-                  <div key={s.t} className="flex items-start gap-4 rounded-xl border border-gold/20 bg-[#1a1612] p-4 md:p-5">
-                    <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-gold/30 bg-black/30">
-                      <Check className="h-5 w-5 text-gold" />
+                  <div key={s.t} className="flex items-start gap-3 rounded-lg border border-border bg-card p-3 md:p-3.5">
+                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-accent">
+                      <Check className="h-4 w-4 text-gold" />
                     </div>
                     <div>
-                      <h4 className="font-display text-base font-bold md:text-lg">{s.t}</h4>
-                      <p className="mt-0.5 text-sm text-primary-foreground/70">{s.d}</p>
+                      <h4 className="font-display text-sm font-bold text-primary md:text-base">{s.t}</h4>
+                      <p className="mt-0.5 text-xs text-muted-foreground md:text-sm">{s.d}</p>
                     </div>
                   </div>
                 ))}
