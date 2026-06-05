@@ -2,7 +2,10 @@
   command = "npm run build"
   publish = ".output/public"
 
+# TanStack Start with nitro `netlify` preset emits the SSR function under
+# .netlify/functions-internal/server — send all non-asset requests there.
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/.netlify/functions-internal/server/server"
   status = 200
+  force = false

@@ -1,13 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import {
   CheckCircle2, MapPin, Home as HomeIcon, TrendingUp, Shield, Sparkles,
   FileText, Menu, Droplet, Leaf, Zap, Waves, Database, Smile, Sun, Camera, CloudRain,
-  Compass, LayoutGrid, Maximize, Ruler,
+  Compass, LayoutGrid, Maximize, Ruler, ChevronLeft, ChevronRight,
 } from "lucide-react";
 import villa from "@/assets/villa.jpg";
 import streetView from "@/assets/street-view.jpg";
 import archGate from "@/assets/arch-gate.jpg";
+import simplex from "@/assets/simplex.jpg";
 import { SectionHeading } from "@/components/SectionHeading";
+
+const sliderImages = [
+  { src: villa, alt: "Vishnu Kuteer Duplex Villa" },
+  { src: simplex, alt: "Vishnu Kuteer Simplex Villa" },
+  { src: archGate, alt: "Grand Entrance Arch" },
+  { src: streetView, alt: "Vishnu Kuteer Street View" },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -152,13 +161,7 @@ function Home() {
               ))}
             </div>
           </div>
-          <div className="relative">
-            <img src={villa} alt="Vishnu Kuteer East Facing Villa" className="rounded-2xl shadow-2xl" />
-            <div className="absolute bottom-4 right-4 rounded-lg bg-primary px-3 py-2 text-primary-foreground shadow-xl">
-              <div className="text-[10px] uppercase tracking-wider text-gold">AHUDA</div>
-              <div className="font-display text-sm font-bold">Approved Project</div>
-            </div>
-          </div>
+          <ProjectSlider />
         </div>
       </section>
 
@@ -217,9 +220,9 @@ function Home() {
           title="Location Advantage"
           sub="Strategically located in a high growth corridor of Anantapur."
         />
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 flex flex-wrap justify-center gap-4">
           {locations.map((l) => (
-            <div key={l.t} className="rounded-2xl border border-border bg-card p-5 transition hover:border-gold hover:shadow-md">
+            <div key={l.t} className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)] rounded-2xl border border-border bg-card p-5 transition hover:border-gold hover:shadow-md">
               <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent">
                 <MapPin className="h-5 w-5 text-gold" />
               </div>
@@ -293,5 +296,70 @@ function Home() {
         </div>
       </section>
     </>
+  );
+}
+
+function ProjectSlider() {
+  const [current, setCurrent] = useState(0);
+  const total = sliderImages.length;
+
+  const prev = () => setCurrent((c) => (c - 1 + total) % total);
+  const next = () => setCurrent((c) => (c + 1) % total);
+
+  return (
+    <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+      {/* Images */}
+      <div
+        className="flex transition-transform duration-500 ease-in-out"
+        style={{ transform: `translateX(-${current * 100}%)` }}
+      >
+        {sliderImages.map((img) => (
+          <img
+            key={img.alt}
+            src={img.src}
+            alt={img.alt}
+            className="w-full flex-shrink-0 object-cover"
+          />
+        ))}
+      </div>
+
+      {/* Left Arrow */}
+      <button
+        onClick={prev}
+        className="absolute left-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/70 text-white shadow-lg backdrop-blur transition hover:bg-primary"
+        aria-label="Previous image"
+      >
+        <ChevronLeft className="h-5 w-5" />
+      </button>
+
+      {/* Right Arrow */}
+      <button
+        onClick={next}
+        className="absolute right-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/70 text-white shadow-lg backdrop-blur transition hover:bg-primary"
+        aria-label="Next image"
+      >
+        <ChevronRight className="h-5 w-5" />
+      </button>
+
+      {/* Dots */}
+      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+        {sliderImages.map((img, i) => (
+          <button
+            key={img.alt}
+            onClick={() => setCurrent(i)}
+            className={`h-2.5 w-2.5 rounded-full border border-white/60 transition ${
+              i === current ? "bg-gold scale-110" : "bg-white/50"
+            }`}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* AHUDA Badge */}
+      <div className="absolute bottom-4 right-4 rounded-lg bg-primary px-3 py-2 text-primary-foreground shadow-xl">
+        <div className="text-[10px] uppercase tracking-wider text-gold">AHUDA</div>
+        <div className="font-display text-sm font-bold">Approved Project</div>
+      </div>
+    </div>
   );
 }
