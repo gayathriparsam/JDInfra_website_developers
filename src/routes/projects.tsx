@@ -4,8 +4,8 @@ import { Bed, Bath, Car, Maximize, Check, MapPin } from "lucide-react";
 import simplex from "@/assets/simplex.jpg";
 import streetView from "@/assets/street-view.jpg";
 import archGate from "@/assets/arch-gate.jpg";
-import eastFacing from "@/assets/east-facing-villa.jpg.asset.json";
-import archModelNew from "@/assets/arch-model-new.jpg.asset.json";
+import eastFacing from "@/assets/simplex.jpg";
+import archModelNew from "@/assets/arch-gate.jpg";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -22,7 +22,7 @@ export const Route = createFileRoute("/projects")({
 const configs = [
   {
     title: "Duplex Villa",
-    img: archModelNew.url,
+    img: archModelNew,
     site: "32 x 45 (3.3 Cents)",
     bhk: "3 BHK",
     bath: "3 Bath",
@@ -114,7 +114,7 @@ function Projects() {
           </div>
 
           <div className="relative">
-            <img src={eastFacing.url} alt="Vishnu Kuteer East Facing Premium Duplex Villa" className="w-full rounded-2xl object-cover shadow-2xl" />
+            <img src={eastFacing} alt="Vishnu Kuteer East Facing Premium Duplex Villa" className="w-full rounded-2xl object-cover shadow-2xl" />
             <div className="absolute right-4 top-4 rounded-lg bg-gold px-4 py-2 text-center text-primary shadow-lg md:right-6 md:top-6">
               <p className="font-display text-base font-bold leading-none md:text-lg">3 BHK</p>
               <p className="mt-1 text-[10px] font-semibold tracking-[0.2em] md:text-xs">DUPLEX VILLA</p>

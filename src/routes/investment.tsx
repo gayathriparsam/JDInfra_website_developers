@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Building2, Home, ClipboardList, Check, X } from "lucide-react";
 import streetView from "@/assets/street-view.jpg";
-import locationGrowth from "@/assets/location-growth.svg.asset.json";
-import appreciation from "@/assets/appreciation.svg.asset.json";
-import eastVilla from "@/assets/east-facing-villa.jpg.asset.json";
+import locationGrowth from "@/assets/street-view.jpg";
+import appreciation from "@/assets/villa.jpg";
+import eastVilla from "@/assets/simplex.jpg";
 
 export const Route = createFileRoute("/investment")({
   head: () => ({
@@ -20,14 +20,14 @@ export const Route = createFileRoute("/investment")({
 const reasons = [
   {
     n: "01",
-    img: locationGrowth.url,
+    img: locationGrowth,
     title: "Location Driven Growth",
     desc: "Kalyandurg Road is rapidly emerging as a key residential corridor in Anantapur district.",
     points: ["A residential expansion zone", "A connectivity hub", "A future growth corridor"],
   },
   {
     n: "02",
-    img: appreciation.url,
+    img: appreciation,
     title: "High Appreciation Potential",
     desc: "Early movers consistently gain the highest returns as a zone transitions from emerging to established.",
     points: ["Early stage pricing advantage", "Increasing demand for villas", "Strategic infrastructure growth"],
@@ -110,7 +110,7 @@ function Investment() {
               </div>
             </div>
             <div className="relative overflow-hidden rounded-2xl shadow-xl">
-              <img src={eastVilla.url} alt="Vishnu Kuteer East Facing Villa" className="h-full w-full object-cover" />
+              <img src={eastVilla} alt="Vishnu Kuteer East Facing Villa" className="h-full w-full object-cover" />
               <div className="absolute bottom-4 left-4 rounded-lg bg-gold px-4 py-2 text-primary shadow-lg">
                 <div className="font-display text-base font-bold leading-none">Now</div>
                 <div className="text-[10px] uppercase tracking-widest">Selling</div>
