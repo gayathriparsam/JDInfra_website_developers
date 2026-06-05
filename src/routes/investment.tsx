@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Building2, Home, ClipboardList, Check, X } from "lucide-react";
 import streetView from "@/assets/street-view.jpg";
-import locationGrowth from "@/assets/street-view.jpg";
+import locationGrowth from "@/assets/simplex.jpg";
 import appreciation from "@/assets/villa.jpg";
 import eastVilla from "@/assets/simplex.jpg";
 
