@@ -14,6 +14,6 @@ export default defineConfig({
   },
   // Node preset: MongoDB + Nodemailer SMTP require TCP (not Cloudflare Workers).
   nitro: {
-    preset: "vercel",
+    preset: "netlify",
   },
 });
