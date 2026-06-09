@@ -4,8 +4,8 @@ import { Bed, Bath, Car, Maximize, Check, MapPin } from "lucide-react";
 import simplex from "@/assets/simplex.jpg";
 import streetView from "@/assets/street-view.jpg";
 import archGate from "@/assets/arch-gate.jpg";
+import villa from "@/assets/villa.jpg";
 import eastFacing from "@/assets/simplex.jpg";
-import archModelNew from "@/assets/arch-gate.jpg";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -22,7 +22,7 @@ export const Route = createFileRoute("/projects")({
 const configs = [
   {
     title: "Duplex Villa",
-    img: archModelNew,
+    img: villa,
     site: "32 x 45 (3.3 Cents)",
     bhk: "3 BHK",
     bath: "3 Bath",
@@ -131,7 +131,7 @@ function Projects() {
         <div className="mt-14 grid gap-8 md:grid-cols-2">
           {configs.map((c) => (
             <article key={c.title} className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:shadow-xl">
-              <img src={c.img} alt={c.title} className="h-64 w-full object-cover md:h-72" />
+              <img src={c.img} alt={c.title} className="h-64 w-full object-cover md:h-72" style={{ aspectRatio: "4 / 3" }} />
               <div className="p-6 md:p-7">
                 <h3 className="font-display text-2xl font-bold text-primary">{c.title}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{c.facing}</p>

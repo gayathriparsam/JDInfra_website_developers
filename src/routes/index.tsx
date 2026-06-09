@@ -222,8 +222,8 @@ function Home() {
         />
         <div className="mt-12 flex flex-wrap justify-center gap-4">
           {locations.map((l) => (
-            <div key={l.t} className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)] rounded-2xl border border-border bg-card p-5 transition hover:border-gold hover:shadow-md">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent">
+            <div key={l.t} className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)] rounded-2xl border border-border bg-card p-5 text-center transition hover:border-gold hover:shadow-md">
+              <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-accent">
                 <MapPin className="h-5 w-5 text-gold" />
               </div>
               <h4 className="mt-4 font-display text-base font-bold text-primary">{l.t}</h4>
