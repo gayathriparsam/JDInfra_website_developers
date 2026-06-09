@@ -179,14 +179,14 @@ function Home() {
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">What You Get</p>
               <h3 className="mt-2 font-display text-2xl font-bold text-primary md:text-3xl">Villa Highlights</h3>
-              <div className="mt-6 divide-y divide-border rounded-2xl border border-border bg-card">
+              <div className="mt-6 grid grid-cols-1 gap-3">
                 {highlights.map(({ icon: Icon, t, d }) => (
-                  <div key={t} className="flex items-start gap-4 p-4 md:p-5">
-                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-accent">
+                  <div key={t} className="flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition hover:border-gold hover:shadow-sm">
+                    <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg bg-accent">
                       <Icon className="h-5 w-5 text-gold" />
                     </div>
-                    <div>
-                      <div className="font-display text-base font-bold text-primary">{t}</div>
+                    <div className="min-w-0">
+                      <div className="font-display text-sm font-bold text-primary">{t}</div>
                       <div className="text-xs text-muted-foreground">{d}</div>
                     </div>
                   </div>
@@ -201,8 +201,8 @@ function Home() {
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {features.map(({ icon: Icon, t }) => (
                   <div key={t} className="flex items-center gap-3 rounded-xl border border-border bg-card p-3 transition hover:border-gold hover:shadow-sm">
-                    <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md bg-accent">
-                      <Icon className="h-4 w-4 text-gold" />
+                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-accent">
+                      <Icon className="h-5 w-5 text-gold" />
                     </div>
                     <span className="text-sm font-medium text-foreground">{t}</span>
                   </div>
