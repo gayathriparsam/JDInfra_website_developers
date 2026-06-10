@@ -26,12 +26,15 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <h4 className="font-display text-lg text-gold">Office</h4>
-          <p className="mt-4 text-sm opacity-90">
-            H.NO. 6-2-897, Meeseva Road<br />
-            Near Venkateswara Swamy Temple<br />
-            Ramnagar, Ananthapuramu
-          </p>
+          <h4 className="font-display text-lg text-gold">Office Address</h4>
+          <div className="mt-4 flex items-start gap-2 text-sm opacity-90">
+            <MapPin className="mt-0.5 h-5 w-5 flex-shrink-0 text-gold" />
+            <span>
+              H.NO. 6-2-897, Meeseva Road<br />
+              Near Venkateswara Swamy Temple<br />
+              Ramnagar, Ananthapuramu
+            </span>
+          </div>
         </div>
         <div>
           <h4 className="font-display text-lg text-gold">Reach Us</h4>
@@ -42,8 +45,11 @@ export function SiteFooter() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-primary-foreground/10 py-5 text-center text-xs opacity-70">
-        © {new Date().getFullYear()} JD Infra Developers. All rights reserved.
+      <div className="border-t border-primary-foreground/10 py-5 px-4 md:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 text-xs opacity-70 md:flex-row">
+          <span>© {new Date().getFullYear()} JD Infra Developers. All rights reserved.</span>
+          <span>Developed by Angadi World Technologies (AWT)</span>
+        </div>
       </div>
     </footer>
   );

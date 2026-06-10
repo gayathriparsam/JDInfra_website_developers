@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import logo from "@/assets/logo.jpg";
 
 const nav = [
@@ -38,9 +38,9 @@ export function SiteHeader() {
         </nav>
         <a
           href="tel:+919642166456"
-          className="hidden rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground transition hover:bg-primary/90 lg:inline-flex"
+          className="hidden items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-bold text-primary shadow-md transition hover:scale-105 lg:inline-flex"
         >
-          Book a Call
+          <Phone className="h-4 w-4" /> Book a Call
         </a>
         <button className="lg:hidden" onClick={() => setOpen(!open)} aria-label="Menu">
           {open ? <X className="h-6 w-6 text-primary" /> : <Menu className="h-6 w-6 text-primary" />}
@@ -61,8 +61,8 @@ export function SiteHeader() {
                 {n.label}
               </Link>
             ))}
-            <a href="tel:+919642166456" className="mt-2 rounded-full bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground">
-              Book a Call
+            <a href="tel:+919642166456" className="mt-2 flex items-center justify-center gap-2 rounded-full bg-gold px-5 py-3 text-center text-sm font-bold text-primary">
+              <Phone className="h-4 w-4" /> Book a Call
             </a>
           </nav>
         </div>

@@ -174,37 +174,37 @@ function Home() {
             sub="A complete villa community designed around modern family life and long term value."
           />
 
-          <div className="mt-12 grid gap-10 lg:grid-cols-2">
-            {/* Villa Highlights */}
+          <div className="mt-12 space-y-12">
+            {/* Villa Highlights — 3×2 grid */}
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">What You Get</p>
               <h3 className="mt-2 font-display text-2xl font-bold text-primary md:text-3xl">Villa Highlights</h3>
-              <div className="mt-6 grid grid-cols-1 gap-3">
+              <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 {highlights.map(({ icon: Icon, t, d }) => (
-                  <div key={t} className="flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition hover:border-gold hover:shadow-sm">
-                    <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg bg-accent">
-                      <Icon className="h-5 w-5 text-gold" />
+                  <div key={t} className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card p-5 text-center transition hover:border-gold hover:shadow-sm">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent">
+                      <Icon className="h-6 w-6 text-gold" />
                     </div>
-                    <div className="min-w-0">
+                    <div>
                       <div className="font-display text-sm font-bold text-primary">{t}</div>
-                      <div className="text-xs text-muted-foreground">{d}</div>
+                      <div className="mt-1 text-xs text-muted-foreground">{d}</div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Project Features */}
+            {/* Project Features — below highlights */}
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">Infrastructure</p>
               <h3 className="mt-2 font-display text-2xl font-bold text-primary md:text-3xl">Project Features</h3>
-              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
                 {features.map(({ icon: Icon, t }) => (
-                  <div key={t} className="flex items-center gap-3 rounded-xl border border-border bg-card p-3 transition hover:border-gold hover:shadow-sm">
-                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-accent">
+                  <div key={t} className="flex flex-col items-center gap-2 rounded-xl border border-border bg-card p-4 text-center transition hover:border-gold hover:shadow-sm">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-accent">
                       <Icon className="h-5 w-5 text-gold" />
                     </div>
-                    <span className="text-sm font-medium text-foreground">{t}</span>
+                    <span className="text-xs font-medium text-foreground">{t}</span>
                   </div>
                 ))}
               </div>
@@ -271,8 +271,8 @@ function Home() {
               { i: Shield, t: "Secure Gated Community", d: "24x7 CCTV and solar fencing for safety." },
               { i: MapPin, t: "Ideal for Investors", d: "High appreciation in an emerging zone." },
             ].map(({ i: Icon, t, d }) => (
-              <div key={t} className="rounded-2xl border border-border bg-card p-6 transition hover:border-gold hover:shadow-lg">
-                <Icon className="h-9 w-9 text-gold" />
+              <div key={t} className="rounded-2xl border border-border bg-card p-6 text-center transition hover:border-gold hover:shadow-lg">
+                <Icon className="mx-auto h-9 w-9 text-gold" />
                 <h3 className="mt-3 font-display text-lg font-bold text-primary">{t}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{d}</p>
               </div>

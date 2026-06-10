@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SectionHeading } from "@/components/SectionHeading";
-import { Bed, Bath, Car, Maximize, Check, MapPin } from "lucide-react";
+import { Bed, Bath, Car, Maximize, Check, MapPin, Home, Compass, LayoutGrid, Ruler, Sparkles } from "lucide-react";
 import simplex from "@/assets/simplex.jpg";
 import streetView from "@/assets/street-view.jpg";
 import archGate from "@/assets/arch-gate.jpg";
@@ -152,6 +152,37 @@ function Projects() {
               </div>
             </article>
           ))}
+        </div>
+      </section>
+
+      {/* Villa Highlights — 3×2 grid */}
+      <section className="bg-secondary py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+          <SectionHeading
+            eyebrow="Villa Highlights"
+            title="What You Get at Vishnu Kuteer"
+            sub="Every detail designed for modern premium living."
+          />
+          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
+            {[
+              { icon: Home, t: "Premium Duplex and Simplex Villas", d: "Thoughtfully designed for modern families" },
+              { icon: Compass, t: "East West and North Facing Options", d: "Choose your preferred orientation" },
+              { icon: LayoutGrid, t: "2 BHK and 3 BHK Configurations", d: "Flexible floor plans to suit your needs" },
+              { icon: Maximize, t: "Approx 2000 Sqft Duplex Villas", d: "Generous living space for every room" },
+              { icon: Ruler, t: "Vastu Compliant Planning", d: "Harmonious energy in every corner" },
+              { icon: Sparkles, t: "Contemporary Elevation Design", d: "Modern aesthetics with timeless appeal" },
+            ].map(({ icon: Icon, t, d }) => (
+              <div key={t} className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card p-6 text-center transition hover:border-gold hover:shadow-sm">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent">
+                  <Icon className="h-6 w-6 text-gold" />
+                </div>
+                <div>
+                  <div className="font-display text-sm font-bold text-primary">{t}</div>
+                  <div className="mt-1 text-xs text-muted-foreground">{d}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
