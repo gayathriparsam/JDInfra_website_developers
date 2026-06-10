@@ -41,7 +41,7 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-3 text-sm">
             <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4 text-gold" /><span>9882342456<br />9642166456</span></li>
             <li className="flex items-start gap-2"><Mail className="mt-0.5 h-4 w-4 text-gold" /><span>jdinfradeveloper@gmail.com</span></li>
-            <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 text-gold" /><span>Survey No 120, Kurugunta Village, Kalyandurgam Main Road, Anantapur</span></li>
+            <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-5 w-5 flex-shrink-0 text-gold" /><span>Survey No 120, Kurugunta Village, Kalyandurgam Main Road, Anantapur</span></li>
           </ul>
         </div>
       </div>
